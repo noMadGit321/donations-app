@@ -17,7 +17,7 @@ class DonationFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
             'donation' => $this->faker->randomFloat(2, 1, 10000),
-            'message' => $this->faker->text()
+            'message' => $this->faker->optional()->text()
         ];
     }
 }

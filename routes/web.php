@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', [DonationController::class, 'showDashboard'])->name('dashboard');
-Route::get('/donation', [DonationController::class, 'showDonationForm'])->name('donation form');
+Route::get('/donation', [DonationController::class, 'showDonationForm'])->name('donation.form');
 Route::post('/donation/make', [DonationController::class, 'createDonation']);
