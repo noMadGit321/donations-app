@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Interfaces\BaseInterface;
 use Illuminate\Support\Collection;
 
-
 abstract class BaseRepository implements BaseInterface
 {
     protected $model;
@@ -58,5 +57,4 @@ abstract class BaseRepository implements BaseInterface
     {
         $this->model = $model;
     }
-
 }

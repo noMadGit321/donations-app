@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDonationRequest;
+use App\Jobs\ProcessNewDonation;
 use App\Services\DonationService;
 
 class DonationController extends Controller
@@ -42,7 +43,7 @@ class DonationController extends Controller
     {
         $validated = $request->validated();
 
-        $this->service->create(
+        $newEntry = $this->service->create(
             [
                 'name'      => $validated['name'],
                 'email'     => $validated['email'],
@@ -50,6 +51,8 @@ class DonationController extends Controller
                 'message'   => $validated['message']
             ]
         );
+
+        ProcessNewDonation::dispatch($newEntry);
 
         return redirect()->route('donation.form');
     }

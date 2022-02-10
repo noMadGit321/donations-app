@@ -4,8 +4,8 @@ namespace App\Services;
 
 use App\Repositories\DonationRepository;
 
-class DonationService extends BaseService{
-
+class DonationService extends BaseService
+{
     public function __construct(DonationRepository $repo)
     {
         $this->repo = $repo;

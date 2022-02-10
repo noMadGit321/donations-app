@@ -4,14 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Donation;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Types\Float_;
-use Ramsey\Uuid\Type\Decimal;
 
 class DonationRepository extends BaseRepository
 {
-
     public function __construct(Donation $model)
     {
         $this->model = $model;
@@ -20,7 +16,8 @@ class DonationRepository extends BaseRepository
     public function getMaxDonation()
     {
         $item = $this->model::orderBy('donation', 'desc')->first();
-        return (!empty($item->name) && !empty($item->name)) ? ['name' => $item->name, 'donation' => $item->donation] : [];
+
+        return (!empty($item->name)) ? ['name' => $item->name, 'donation' => $item->donation] : [];
     }
 
     public function getDonationsDay()
