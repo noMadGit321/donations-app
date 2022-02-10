@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreDonationRequest;
 use App\Services\DonationService;
 
 class DonationController extends Controller
@@ -20,16 +20,15 @@ class DonationController extends Controller
         $donationsGroupByDay = $this->service->getDonationsGroupByDay();
         $allItems = $this->service->getAllPagintion();
 
-
         return view(
             'dashboard',
             [
-                'maxDonationName' => (!empty($maxDonation['name'])) ? $maxDonation['name'] : '',
-                'maxDonation' => (!empty($maxDonation['donation'])) ? $maxDonation['donation'] : 0,
-                'sumCurrentDay' => $donationsSumCurrentDay,
-                'sumLastMonth' => $donationsSumLastMonth,
-                'sumByDays' => $donationsGroupByDay,
-                'allItems' => $allItems
+                'maxDonationName'   => (!empty($maxDonation['name'])) ? $maxDonation['name'] : '',
+                'maxDonation'       => (!empty($maxDonation['donation'])) ? $maxDonation['donation'] : 0,
+                'sumCurrentDay'     => $donationsSumCurrentDay,
+                'sumLastMonth'      => $donationsSumLastMonth,
+                'sumByDays'         => $donationsGroupByDay,
+                'allItems'          => $allItems
             ]
         )->render();
     }
@@ -39,23 +38,16 @@ class DonationController extends Controller
         return view('make_donation')->render();
     }
 
-    public function createDonation(Request $request)
+    public function createDonation(StoreDonationRequest $request)
     {
-        $request->validate(
-            [
-                'name' => 'required|max:255',
-                'email' => 'required|email|max:255',
-                'donation' => 'required|numeric|between:1,999999',
-                'message' => 'nullable|max:2000'
-            ]
-        );
+        $validated = $request->validated();
 
         $this->service->create(
             [
-                'name' => $request->name,
-                'email' => $request->email,
-                'donation' => $request->donation,
-                'message' => $request->message
+                'name'      => $validated['name'],
+                'email'     => $validated['email'],
+                'donation'  => $validated['donation'],
+                'message'   => $validated['message']
             ]
         );
 
