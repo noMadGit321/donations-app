@@ -4,14 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Donation;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Types\Float_;
-use Ramsey\Uuid\Type\Decimal;
 
 class DonationRepository extends BaseRepository
 {
-
     public function __construct(Donation $model)
     {
         $this->model = $model;
