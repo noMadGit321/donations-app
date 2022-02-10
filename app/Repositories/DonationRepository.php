@@ -16,7 +16,8 @@ class DonationRepository extends BaseRepository
     public function getMaxDonation()
     {
         $item = $this->model::orderBy('donation', 'desc')->first();
-        return (!empty($item->name) && !empty($item->name)) ? ['name' => $item->name, 'donation' => $item->donation] : [];
+
+        return (!empty($item->name)) ? ['name' => $item->name, 'donation' => $item->donation] : [];
     }
 
     public function getDonationsDay()

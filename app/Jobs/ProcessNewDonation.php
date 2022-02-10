@@ -34,7 +34,8 @@ class ProcessNewDonation implements ShouldQueue
      */
     public function handle()
     {
-        $this->newEntry->image_url = 'https://www.gravatar.com/avatar/' . md5(strtolower($this->newEntry->email)) . '.jpg?s=200&d=mm';
+        $hash = md5(strtolower($this->newEntry->email));
+        $this->newEntry->image_url = 'https://www.gravatar.com/avatar/' . $hash . '.jpg?s=200&d=mm';
 
         $this->newEntry->save();
     }
