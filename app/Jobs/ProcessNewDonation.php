@@ -15,7 +15,7 @@ class ProcessNewDonation implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    private $newEntry;
+    public $newEntry;
 
     /**
      * Create a new job instance.
