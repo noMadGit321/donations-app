@@ -19,7 +19,7 @@ class DonationController extends Controller
         $donationsSumCurrentDay = $this->service->getDonationsDay();
         $donationsSumLastMonth = $this->service->getDonationsLastMonth();
         $donationsGroupByDay = $this->service->getDonationsGroupByDay();
-        $allItems = $this->service->getAllPagintion();
+        $paginationSize = 10;
 
         return view(
             'dashboard',
@@ -29,7 +29,7 @@ class DonationController extends Controller
                 'sumCurrentDay'     => $donationsSumCurrentDay,
                 'sumLastMonth'      => $donationsSumLastMonth,
                 'sumByDays'         => $donationsGroupByDay,
-                'allItems'          => $allItems
+                'paginationSize'          => $paginationSize
             ]
         )->render();
     }
