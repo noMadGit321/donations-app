@@ -23,12 +23,14 @@ class LivewireTest extends TestCase
         $this->repo = resolve(DonationRepository::class);
     }
 
-    public function test_widget_works_correclty() {
+    public function test_widget_works_correclty()
+    {
         Livewire::test(Widget::class, ['data' => ['name' => 'name', 'donation' => 200], 'type' => 1])
             ->assertSee('Highest donation');
     }
 
-    public function test_table_works_correctly() {
+    public function test_table_works_correctly()
+    {
         $collection = Donation::factory()->count(20)->create();
 
 
@@ -36,7 +38,8 @@ class LivewireTest extends TestCase
             ->assertSee($collection[10]->name);
     }
 
-    public function test_table_pagination_works_correctly() {
+    public function test_table_pagination_works_correctly()
+    {
         $collection = Donation::factory()->count(20)->create();
 
 
@@ -44,7 +47,8 @@ class LivewireTest extends TestCase
             ->assertDontSee($collection[10]->name);
     }
 
-    public function test_donation_form_works_correctly() {
+    public function test_donation_form_works_correctly()
+    {
         Livewire::test(DonationForm::class)
             ->assertViewIs('livewire.donation-form');
     }
