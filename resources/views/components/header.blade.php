@@ -1,4 +1,5 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@livewireStyles
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <header class="p-3 bg-dark text-white">
     <div class="d-flex text-wrap align-items-center justify-content-center justify-content-lg-start">
