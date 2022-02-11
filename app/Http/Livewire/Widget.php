@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class Widget extends Component
 {
-
     public $data;
 
     public $type;
